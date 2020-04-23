@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+:root {
+  --color-base-hue: 200;
+  --color-success-hue-offset: 100;
+  --color-danger-hue-offset: 180;
+  --color-danger-hue: calc(var(--color-base-hue) - var(--color-danger-hue-offset));
+  --color-success-hue: calc(var(--color-base-hue) - var(--color-success-hue-offset));
+  --color-text-light: hsl(var(--color-base-hue), 100%, 87%);
+  --color-background-dark: hsl(var(--color-base-hue), 100%, 8%);
+  --color-background-light: hsl(var(--color-base-hue), 100%, 16%);
+  --color-border: hsl(var(--color-base-hue), 100%, 50%);
+  --color-text-success: hsl(var(--color-success-hue), 100%, 58%);
+  --color-text-danger: hsl(var(--color-danger-hue), 100%, 83%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: linear-gradient(to right, var(--color-background-dark), var(--color-background-light));
+  font-family: 'Gotham Rounded';
+  color: var(--color-text-light);
+  font-size: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container-fluid {
   min-height: 100vh;
+}
+
+.btn {
+  border: 3px solid var(--color-border);
+  border-radius: .5rem;
+  font-size: inherit;
+  padding: .5rem 1rem;
+  font-family: 'Gotham Rounded';
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  background: transparent;
+  color: var(--color-text-light);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.btn-success {
+  border-color: var(--color-text-success) !important;
+  background-color: var(--color-text-success) !important;
+  color: white !important;
+  cursor: default !important;
+}
+
+.btn-danger {
+  border-color: var(--color-text-danger) !important;
+  background-color: var(--color-text-danger) !important;
+  color: black !important;
+  cursor: default !important;
+}
+
+.btn:disabled:hover {
+  cursor: not-allowed;
+}
+
+.btn:not(:disabled):hover {
   color: white;
+  background-color: var(--color-border);
 }
 
-.App-link {
-  color: #61dafb;
+.bordered-container {
+  border: 3px solid var(--color-border);
+  border-radius: .75rem;
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.w-max-content {
+  width: max-content;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.question {
+  min-height: 20vh;
+}
+
+.sidebar-grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto 1fr;
+  gap: 0 .75rem;
+}
+
+.divider.show {
+  background-color: var(--color-text-light);
+  height: 2px;
+  width: 100%;
+}
+
+.perk {
+  height: 156px;
+  width: 156px;
+}
+
+.perk.fifty {
+  position: relative;
+}
+
+.perk.fifty::before {
+  content: '50';
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  line-height: 1;
+  font-size: 1.5em;
+}
+
+.perk.fifty::after {
+  content: '50';
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  line-height: 1;
+  font-size: 1.5em;
+}
+
+.diagonal-line {
+  position: absolute;
+  width: 156px;
+  transform: translateY(-50%) rotate(-45deg);
+  height: 6px;
+  background-color: var(--color-text-light);
+}
+
+.google svg * {
+  transition: fill .15s ease-in-out;
+}
+
+.google:not(:disabled):hover svg * {
+  fill: white;
+}
+
+.success-text {
+  color: var(--color-text-success) !important;
+}
+
+.success-bg {
+  background-color: var(--color-text-success) !important;
+}
+
+.danger-bg {
+  background-color: var(--color-text-danger) !important;
+}
+
+.danger-text {
+  color: var(--color-text-danger) !important;
 }
