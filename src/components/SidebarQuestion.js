@@ -11,14 +11,13 @@ export default function SidebarQuestion({ current, correct, questionNumber }) {
     <>
       <div className={`divider ${showDivider ? 'show' : ''} ${colorClass}-bg`}></div>
       <div className={`ml-1 ${boldClass} ${colorClass}-text`} style={{ justifySelf: "end" }}>{questionNumber}</div>
-      <div className={`${boldClass} ${colorClass}-text`}>-</div>
-      <div className={`mr-1 ${boldClass} ${colorClass}-text`}>${dollarAmount(questionNumber)}</div>
+      <div className={`${boldClass} ${colorClass}-text`}>:</div>
+      <div className={`mr-1 ${boldClass} ${colorClass}-text`}>{pushupAmount(questionNumber)}p</div>
       <div className={`divider ${showDivider ? 'show' : ''} ${colorClass}-bg`}></div>
     </>
   )
 }
 
-function dollarAmount(questionNumber) {
-  if (questionNumber <= 10) return questionNumber * 5
-  return (questionNumber - 10) * 10 + 50
+function pushupAmount(questionNumber) {
+  return (5 - questionNumber) * -5
 }

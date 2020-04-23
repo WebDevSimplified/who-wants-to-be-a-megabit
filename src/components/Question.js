@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Question({ number, question, setQuestions, setCurrentQuestionIndex }) {
+export default function Question({ number, question, setQuestions, setCurrentQuestionIndex, fiftyFifty }) {
   function answerClicked(answer) {
     if (question.correct == null) {
       const correct = question.correctAnswer === answer
@@ -22,14 +22,15 @@ export default function Question({ number, question, setQuestions, setCurrentQue
         {question.questionText}
       </div>
       <div className="answer-grid">
-        {question.answers.map(answer => {
+        {question.answers.map((answer, index) => {
+          const correctAnswer = answer === question.correctAnswer
           let extraClass
           if (question.correct != null) {
-            extraClass = answer === question.correctAnswer ? 'btn-success' : 'btn-danger'
+            extraClass = correctAnswer ? 'btn-success' : 'btn-danger'
           }
           return (
-            <button onClick={() => answerClicked(answer)} key={answer} className={`btn ${extraClass}`}>
-              {answer}
+            <button onClick={() => answerClicked(answer)} key={`${answer}-${index}`} className={`btn ${extraClass}`}>
+              {correctAnswer || question.incorrectAnswers[0] === answer || !fiftyFifty || question.correct != null ? answer : <span dangerouslySetInnerHTML={{ __html: "&nbsp;" }}></span>}
             </button>
           )  
         })}

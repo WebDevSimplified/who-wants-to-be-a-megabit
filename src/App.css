@@ -5,15 +5,14 @@
   --color-danger-hue: calc(var(--color-base-hue) - var(--color-danger-hue-offset));
   --color-success-hue: calc(var(--color-base-hue) - var(--color-success-hue-offset));
   --color-text-light: hsl(var(--color-base-hue), 100%, 87%);
-  --color-background-dark: hsl(var(--color-base-hue), 100%, 8%);
-  --color-background-light: hsl(var(--color-base-hue), 100%, 16%);
+  --color-background: hsl(var(--color-base-hue), 100%, 8%);
   --color-border: hsl(var(--color-base-hue), 100%, 50%);
   --color-text-success: hsl(var(--color-success-hue), 100%, 58%);
   --color-text-danger: hsl(var(--color-danger-hue), 100%, 83%);
 }
 
 body {
-  background: linear-gradient(to right, var(--color-background-dark), var(--color-background-light));
+  background: var(--color-background);
   font-family: 'Gotham Rounded';
   color: var(--color-text-light);
   font-size: 2rem;
@@ -28,7 +27,7 @@ body {
   border-radius: .5rem;
   font-size: inherit;
   padding: .5rem 1rem;
-  font-family: 'Gotham Rounded';
+  font-family: inherit;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -42,19 +41,20 @@ body {
 .btn-success {
   border-color: var(--color-text-success) !important;
   background-color: var(--color-text-success) !important;
-  color: white !important;
+  color: var(--color-background) !important;
   cursor: default !important;
 }
 
 .btn-danger {
   border-color: var(--color-text-danger) !important;
   background-color: var(--color-text-danger) !important;
-  color: black !important;
+  color: var(--color-background) !important;
   cursor: default !important;
 }
 
 .btn:disabled:hover {
   cursor: not-allowed;
+  color: var(--color-text-light);
 }
 
 .btn:not(:disabled):hover {
@@ -82,7 +82,7 @@ body {
 }
 
 .question {
-  min-height: 20vh;
+  min-height: 30vh;
 }
 
 .sidebar-grid {
@@ -132,12 +132,28 @@ body {
   background-color: var(--color-text-light);
 }
 
+.perk.google {
+  font-size: 2em;
+}
+
+.perk.google:disabled {
+  color: white !important;
+}
+
 .google svg * {
   transition: fill .15s ease-in-out;
 }
 
 .google:not(:disabled):hover svg * {
   fill: white;
+}
+
+.perk.timer:disabled {
+  opacity: 1;
+}
+
+.perk:disabled {
+  opacity: .25;
 }
 
 .success-text {

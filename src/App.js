@@ -1,34 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './app.css'
 import Question from './components/Question'
 import Sidebar from './components/Sidebar'
 
 const QUESTION_LIST = [
   {
-    questionText: "This is the first question.",
-    correctAnswer: "Correct Answer",
+    questionText: "What does JS stand for?",
+    correctAnswer: "JavaScript",
     incorrectAnswers: [
-      "Not Right",
-      "Still Not Right",
-      "Definitley Not Right"
+      "JeSter",
+      "Just Stellar",
+      "Java Sucks"
     ]
   },
   {
-    questionText: "This is the second question.",
-    correctAnswer: "Correct Answer 2",
+    questionText: "What is CSS used for?",
+    correctAnswer: "Styling Web Pages",
     incorrectAnswers: [
-      "Not Right 2",
-      "Still Not Right 2",
-      "Definitley Not Right 2"
+      "Storing Data",
+      "Machine Learning",
+      "Confusing You"
     ]
   },
   {
-    questionText: "This is the first question.",
-    correctAnswer: "Correct Answer",
+    questionText: "Who Should I Collab With?",
+    correctAnswer: "Tag Them Below",
     incorrectAnswers: [
-      "Not Right",
-      "Still Not Right",
-      "Definitley Not Right"
+      "Tag Them Below",
+      "Tag Them Below",
+      "Tag Them Below"
     ]
   },
   {
@@ -147,19 +147,23 @@ const RANDOMIZED_QUESTION_ANSWERS_LIST = QUESTION_LIST.map(question => {
 })
 
 export default function App() {
+  const [fiftyFifty, setFiftyFifty] = useState(false)
   const [questions, setQuestions] = useState(RANDOMIZED_QUESTION_ANSWERS_LIST)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const currentQuestion = questions[currentQuestionIndex]
+  useEffect(() => {
+    setFiftyFifty(false)
+  }, [currentQuestionIndex])
 
   return (
     <div className="container-fluid py-4 d-flex flex-column">
       <div className="row flex-grow-1 mb-5">
         <div className="col-9 d-flex flex-column flex-grow-1">
           <div className="flex-grow-1"></div>
-          <Question question={currentQuestion} number={currentQuestionIndex + 1} setQuestions={setQuestions} setCurrentQuestionIndex={setCurrentQuestionIndex} />
+          <Question fiftyFifty={fiftyFifty} question={currentQuestion} number={currentQuestionIndex + 1} setQuestions={setQuestions} setCurrentQuestionIndex={setCurrentQuestionIndex} />
         </div>
         <div className="col-3 d-flex flex-column flex-grow-1">
-          <Sidebar questions={questions} currentQuestionIndex={currentQuestionIndex} />
+          <Sidebar setFiftyFifty={setFiftyFifty} questions={questions} currentQuestionIndex={currentQuestionIndex} />
         </div>
       </div>
     </div>
