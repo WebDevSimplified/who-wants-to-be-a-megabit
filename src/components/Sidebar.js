@@ -20,7 +20,7 @@ const GOOGLE_SVG = (
 export default function Sidebar({ questions, currentQuestionIndex, setFiftyFifty }) {
   const [fiftyFiftyDisabled, setFiftyFiftyDisabled] = useState(false)
   const [googleDisabled, setGoogleDisabled] = useState(false)
-  const [timer, setTimer] = useState(30)
+  const [timer, setTimer] = useState(15)
 
   function fitfyfiftyPower() {
     setFiftyFifty(true)

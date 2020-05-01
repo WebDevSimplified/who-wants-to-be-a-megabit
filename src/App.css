@@ -18,6 +18,12 @@ body {
   font-size: 2rem;
 }
 
+code,
+pre {
+  text-align: left;
+  color: inherit;
+}
+
 .container-fluid {
   min-height: 100vh;
 }
