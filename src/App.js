@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './app.css'
 import Question from './components/Question'
 import Sidebar from './components/Sidebar'
-import QUESTION_LIST from './questions/DevEd'
+import QUESTION_LIST from './questions/Kevin'
 
 const RANDOMIZED_QUESTION_ANSWERS_LIST = QUESTION_LIST.map(question => {
   const answers = [question.correctAnswer, ...question.incorrectAnswers].sort(() => Math.random() - .5)
