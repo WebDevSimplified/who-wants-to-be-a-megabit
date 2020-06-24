@@ -1,4 +1,6 @@
 import React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export default function Question({ number, question, setQuestions, setCurrentQuestionIndex, fiftyFifty }) {
   function answerClicked(answer) {
@@ -13,6 +15,23 @@ export default function Question({ number, question, setQuestions, setCurrentQue
     }
   }
 
+  let questionCode
+  if (question.questionCode) {
+    if (question.questionLanguage) {
+      questionCode = (
+        <SyntaxHighlighter
+          customStyle={{ all: 'initial', fontSize: '87.5%' }}
+          language={question.questionLanguage}
+          style={dark}
+        >
+          {question.questionCode}
+        </SyntaxHighlighter>
+      )
+    } else {
+      questionCode = <pre>{question.questionCode}</pre>
+    }
+  }
+
   return (
     <div>
       <div className="bordered-container w-max-content mb-1 small py-1 font-weight-light">
@@ -20,7 +39,7 @@ export default function Question({ number, question, setQuestions, setCurrentQue
       </div>
       <div className="bordered-container mb-5 question text-center d-flex flex-column">
         {question.questionText}
-        {question.questionCode && <pre>{question.questionCode}</pre>}
+        {questionCode}
       </div>
       <div className="answer-grid">
         {question.answers.map((answer, index) => {
