@@ -93,7 +93,7 @@ pre {
 
 .sidebar-grid {
   display: grid;
-  grid-template-columns: 1fr auto auto auto 1fr;
+  grid-template-columns: 1fr auto 1fr;
   gap: 0 .75rem;
 }
 
