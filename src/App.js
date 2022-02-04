@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import "./app.css"
+import "./App.css"
 import Question from "./components/Question"
 import Sidebar from "./components/Sidebar"
 import QUESTION_LIST from "./questions/Clement"
